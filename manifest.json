@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Les joies du code - Feedly hacker",
+  "description": "Add gif from the Tumblr 'Les joies du code' to Feedly.",
+  "version": "1",
+  "author": "Julien Déray",
+
+  "icons": { 
+    "16": "lesjoiesducode16.png",    
+    "128": "lesjoiesducode128.png" 
+  },
+
+  "permissions": ["http://lesjoiesducode.fr/"],
+
+  "content_scripts": [ 
+  	{
+  		"matches": [ "*://feedly.com/*" ],
+  		"js" : [ "jquery-1.11.1.min.js", "script.js" ],
+  		"run_at": "document_idle"
+  	} 
+  ]
+}
