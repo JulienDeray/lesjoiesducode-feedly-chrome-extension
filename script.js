@@ -12,14 +12,15 @@ $(document).on('click', function(evt) {
     }
 
     setTimeout(function() {
-      var entryUrl  = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
+      var entryUrl = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
 
       if ( entryUrl.indexOf('lesjoiesducode') > -1 ) {
         var entryBody = $('div[id*="' + general_id + '"]').find('div[id*="entryBody"]').first();     
-
         $.get(entryUrl, function( data ) {      
-            var img_url = $(data).find('.e > img').attr('src');                
+          var img_url = $(data).find('.e > img').attr('src');                
+          if ( entryBody.first().find('img').first().attr('src') != img_url ) {
             entryBody.prepend('<center><img src="' + img_url + '"/></center>');
+          }
         }, 'html');
       }
     }, 500);
