@@ -19,7 +19,7 @@ $(document).on('click', function(evt) {
 
         $.get(entryUrl, function( data ) {      
             var img_url = $(data).find('.e > img').attr('src');                
-            entryBody.prepend('<img src="' + img_url + '"/>');
+            entryBody.prepend('<center><img src="' + img_url + '"/></center>');
         }, 'html');
       }
     }, 500);
