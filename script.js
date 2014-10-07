@@ -1,9 +1,13 @@
+var handledTumblrs = ["http://lesjoiesducode.fr", "http://thecodinglove.com"];
+
 // get content and add it to view
-function(general_id) {
+function display(general_id) {
   setTimeout(function() {
     var entryUrl = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
 
-    if ( entryUrl.indexOf('lesjoiesducode') > -1 ) {
+    var slashAfterDomainIndex = entryUrl.indexOf('/', 7);
+    var domain = entryUrl.substr(0, slashAfterDomainIndex);
+    if ( $.inArray(domain, handledTumblrs) > -1 ) {
       var entryBody = $('div[id*="' + general_id + '"]').find('div[id*="entryBody"]').first();     
       $.get(entryUrl, function( data ) {      
         var img_url = $(data).find('.e > img').attr('src');                
