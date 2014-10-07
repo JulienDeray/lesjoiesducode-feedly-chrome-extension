@@ -22,7 +22,7 @@ var display = function(){
 $(document).keydown(function(evt) { 
   setTimeout(function() {
     setTimeout(function() {
-      general_id = $('.inlineFrame').find('table').find('a').first().attr('id').split('=')[0];
+      general_id = $('.inlineFrame, .slideEntryContent').find('table').find('a').first().attr('id').split('=')[0];
       display();
     });
   }, 500);
