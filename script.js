@@ -19,10 +19,8 @@ var display = function(general_id){
 $(document).keydown(function(evt) {
   var general_id;
   setTimeout(function() {
-    setTimeout(function() {
-      general_id = $('.inlineFrame, .slideEntryContent').find('table').find('a').first().attr('id').split('=')[0];
-      display(general_id);
-    });
+    general_id = $('.inlineFrame, .slideEntryContent').find('table').find('a').first().attr('id').split('=')[0];
+    display(general_id);
   }, 500);
 });
 
@@ -39,4 +37,4 @@ $(document).on('click', function(evt) {
     return;
   }
   display(general_id);
-})
+});
