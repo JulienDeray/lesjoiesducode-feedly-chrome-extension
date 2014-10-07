@@ -1,8 +1,5 @@
-// id of frame where to find url and add content 
-var general_id;
-
 // get content and add it to view
-var display = function(){
+var display = function(general_id){
   setTimeout(function() {
     var entryUrl = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
 
@@ -19,18 +16,19 @@ var display = function(){
 };
 
 // keayboard control
-$(document).keydown(function(evt) { 
+$(document).keydown(function(evt) {
+  var general_id;
   setTimeout(function() {
     setTimeout(function() {
       general_id = $('.inlineFrame, .slideEntryContent').find('table').find('a').first().attr('id').split('=')[0];
-      display();
+      display(general_id);
     });
   }, 500);
 });
 
 // mouse control
-$(document).on('click', function(evt) { 
-  
+$(document).on('click', function(evt) {
+  var general_id;
   if ( $(evt.target).is('a') ) {
     general_id = $(evt.target).attr('id').split('=')[0];
   }
@@ -40,5 +38,5 @@ $(document).on('click', function(evt) {
   else {
     return;
   }
-  display();
-});
+  display(general_id);
+})
