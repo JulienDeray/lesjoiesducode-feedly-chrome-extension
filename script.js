@@ -35,7 +35,7 @@ $(document).on('click', function(evt) {
     general_id = $(evt.target).attr('id').split('=')[0];
   }
   else if ( $(evt.target).is('div') ) {
-    general_id = $(evt.target).find('a').attr('id').split('=')[0];
+    general_id = $(evt.target).parent().find('a').attr('id').split('=')[0];
   }
   else {
     return;
