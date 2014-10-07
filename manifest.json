@@ -18,7 +18,5 @@
   		"js" : [ "jquery-1.11.1.min.js", "script.js" ],
   		"run_at": "document_idle"
   	} 
-  ],
-
-  "web_accessible_resources": ["ajax-loader.gif"]
+  ]
 }
