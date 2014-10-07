@@ -1,5 +1,5 @@
 // get content and add it to view
-var display = function(general_id){
+function(general_id) {
   setTimeout(function() {
     var entryUrl = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
 
@@ -13,7 +13,7 @@ var display = function(general_id){
       }, 'html');
     }
   }, 300);
-};
+}
 
 // keayboard control
 $(document).keydown(function(evt) {
