@@ -12,7 +12,7 @@ var display = function(general_id){
         }
       }, 'html');
     }
-  }, 500);
+  }, 300);
 };
 
 // keayboard control
@@ -21,7 +21,7 @@ $(document).keydown(function(evt) {
   setTimeout(function() {
     general_id = $('.inlineFrame, .slideEntryContent').find('table').find('a').first().attr('id').split('=')[0];
     display(general_id);
-  }, 500);
+  }, 300);
 });
 
 // mouse control
