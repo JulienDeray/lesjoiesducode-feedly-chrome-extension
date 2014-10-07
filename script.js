@@ -1,27 +1,44 @@
-$(document).on('click', function(evt) {    
-    var general_id;
+// id of frame where to find url and add content 
+var general_id;
 
-    if ( $(evt.target).is('a') ) {
-      general_id = $(evt.target).attr('id').split('=')[0];
-    }
-    else if ( $(evt.target).is('div') ) {
-      general_id = $(evt.target).find('a').attr('id').split('=')[0];
-    }
-    else {
-      return;
-    }
+// get content and add it to view
+var display = function(){
+  setTimeout(function() {
+    var entryUrl = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
 
+    if ( entryUrl.indexOf('lesjoiesducode') > -1 ) {
+      var entryBody = $('div[id*="' + general_id + '"]').find('div[id*="entryBody"]').first();     
+      $.get(entryUrl, function( data ) {      
+        var img_url = $(data).find('.e > img').attr('src');                
+        if ( entryBody.first().find('img').first().attr('src') != img_url ) {
+          entryBody.prepend('<center><img src="' + img_url + '"/></center>');
+        }
+      }, 'html');
+    }
+  }, 500);
+};
+
+// keayboard control
+$(document).keydown(function(evt) { 
+  setTimeout(function() {
     setTimeout(function() {
-      var entryUrl = $('div[id*="' + general_id + '"]').find('a[id*="entry_title"]').first().attr('href');
+      general_id = $('.inlineFrame').find('table').find('a').first().attr('id').split('=')[0];
+      display();
+    });
+  }, 500);
+});
 
-      if ( entryUrl.indexOf('lesjoiesducode') > -1 ) {
-        var entryBody = $('div[id*="' + general_id + '"]').find('div[id*="entryBody"]').first();     
-        $.get(entryUrl, function( data ) {      
-          var img_url = $(data).find('.e > img').attr('src');                
-          if ( entryBody.first().find('img').first().attr('src') != img_url ) {
-            entryBody.prepend('<center><img src="' + img_url + '"/></center>');
-          }
-        }, 'html');
-      }
-    }, 500);
+// mouse control
+$(document).on('click', function(evt) { 
+  
+  if ( $(evt.target).is('a') ) {
+    general_id = $(evt.target).attr('id').split('=')[0];
+  }
+  else if ( $(evt.target).is('div') ) {
+    general_id = $(evt.target).find('a').attr('id').split('=')[0];
+  }
+  else {
+    return;
+  }
+  display();
 });
